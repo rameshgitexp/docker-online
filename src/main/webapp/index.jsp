@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2 style="color: purple">revuka devi</h2>
+<h2 style="color: purple">java home app</h2>
 </body>
 </html>
