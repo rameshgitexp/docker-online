@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2 style="color: blue">i want to die</h2>
+<h2 style="color: green">java home app</h2>
 </body>
 </html>
