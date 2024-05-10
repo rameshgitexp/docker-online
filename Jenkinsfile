@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    environment {
-        // Define AWS region and ECR repository URL
-        AWS_DEFAULT_REGION = 'ap-south-1'
-        ECR_REPOSITORY = '211125669141.dkr.ecr.ap-south-1.amazonaws.com/ramesh.repo'
+  
     }
     stages {
         stage("Maven Build") {
@@ -26,13 +23,12 @@ pipeline {
                 }
             }
         }
-        stage('Tag and Push Docker Image to ECR') {
+        stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
-                    // Tag the built image with ECR repository URL and 'latest' tag
-                    docker.image("testrameshnew458:0.1").tag("${ECR_REPOSITORY}:latest")
-                    // Push the tagged image to ECR repository
-                    docker.image("${ECR_REPOSITORY}:latest").push()
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_credentials') {
+                        docker.image("testrameshnew458:0.1").push()
+                    }
                 }
             }
         }
