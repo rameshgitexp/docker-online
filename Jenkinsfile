@@ -1,10 +1,10 @@
 pipeline {
     agent any
-     environment {
+    environment {
         // Define AWS region and ECR repository URL
         AWS_DEFAULT_REGION = 'ap-south-1'
         ECR_REPOSITORY = '211125669141.dkr.ecr.ap-south-1.amazonaws.com/ramesh.repo'
-    
+    }
     stages {
         stage("Maven Build") {
             steps {
@@ -12,7 +12,6 @@ pipeline {
                 sh 'mvn package'
             }
         }
-        
         stage("Build Docker Image") {
             steps {
                 script {
@@ -20,20 +19,19 @@ pipeline {
                 }
             }
         }
-
         stage('Docker Login') {
             steps {
                 script {
                     sh 'docker login -u testrameshnew458 -p Meshra@123'
                 }
             }
-             stage('Push Docker Image to ECR') {
+        }
+        stage('Push Docker Image to ECR') {
             steps {
                 script {
-                    sh "docker push ${env.ECR_REPOSITORY}:latest"
+                    sh "docker push ${ECR_REPOSITORY}:latest"
                 }
             }
-        }
         }
     }
 }
