@@ -1,10 +1,6 @@
 pipeline {
     agent any
-    
-    environment {
-        // Define environment variables here if needed
-    }
-    
+}
     stages {
         stage("Maven Build") {
             steps {
@@ -22,12 +18,11 @@ pipeline {
                 }
             }
         }
-    }
-            stage('Docker Login') {
-                steps {
-                    script {
-                     sh 'docker login -u testrameshnew458 -p Meshra@123'
-                    }
+
+        stage('Docker Login') {
+            steps {
+                script {
+                    sh 'docker login -u testrameshnew458 -p Meshra@123'
                 }
             }
         }
