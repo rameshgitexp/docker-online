@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Use the Docker Pipeline syntax to build the Docker image
-                    docker build -t myimage:latest .
+                    docker build -t testrameshnew458:0.1 .
                 }
             }
         }
