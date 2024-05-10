@@ -8,7 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('git Checkout') {
+        stage('main') {
             steps {
                git branch: 'main', credentialsId: 'ec2-user', url: 'https://github.com/rameshgitexp/docker-online.git'
             }
