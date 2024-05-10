@@ -26,7 +26,7 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_credentials') {
+                    docker.withRegistry('hhttps://hub.docker.com/explore', 'testrameshnew458') {
                         docker.image("testrameshnew458:0.1").push()
                     }
                 }
