@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Use the Docker Pipeline syntax to build the Docker image
-                    docker.build("ram/apache:2.0")
+                    docker build -t myimage:latest .
                 }
             }
         }
