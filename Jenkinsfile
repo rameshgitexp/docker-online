@@ -23,17 +23,10 @@ pipeline {
             }
         }
     }
-    
-    post {
-        success {
-            // Actions to perform after a successful build
-            // For example, Docker login
             stage('Docker Login') {
                 steps {
                     script {
-                        // Perform Docker login
-                        // Replace 'testrameshnew458' and 'Meshra@123' with your Docker username and password
-                        sh 'docker login -u testrameshnew458 -p Meshra@123'
+                     sh 'docker login -u testrameshnew458 -p Meshra@123'
                     }
                 }
             }
