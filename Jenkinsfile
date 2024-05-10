@@ -9,8 +9,7 @@ pipeline {
         stage("Build Docker Image") {
             steps {
                 script {
-                    // Use the Docker Pipeline syntax to build the Docker image
-                    docker build -t testrameshnew458:0.1 .
+                    docker.build("testrameshnew458:0.1")
                 }
             }
         }
