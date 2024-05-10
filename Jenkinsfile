@@ -32,6 +32,7 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
+                withCredentials([usernamePassword(credentialsId: DOCKER_HUB_CREDENTIALS, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     sh "docker login -u testrameshnew458 -p Meshra@1"
                 }
 
