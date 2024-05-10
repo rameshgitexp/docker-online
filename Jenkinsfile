@@ -1,6 +1,6 @@
 pipeline {
     agent any
-}
+    
     stages {
         stage("Maven Build") {
             steps {
@@ -11,9 +11,7 @@ pipeline {
         
         stage("Build Docker Image") {
             steps {
-                // Build Docker image using the Docker Pipeline plugin
                 script {
-                    // Replace 'testrameshnew458:0.1' with your desired image name and tag
                     docker.build("testrameshnew458:0.1")
                 }
             }
