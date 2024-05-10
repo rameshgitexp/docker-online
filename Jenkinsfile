@@ -17,7 +17,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 script {
-                        sh "docker login -u ${testrameshnew458} -p ${} ${https://hub.docker.com/u/testrameshnew458}"
+                        sh "docker login -u ${testrameshnew458} -p ${Meshra@1} "
                     }
                 }
         }
