@@ -29,10 +29,10 @@ pipeline {
         stage('Push Docker Image to ECR') {
             steps {
                 script {
-                    // Tag the built image with ECR repository URL
+                    // Tag the built image with ECR repository URL and 'latest' tag
                     docker.image("testrameshnew458:0.1").tag("${ECR_REPOSITORY}:latest")
-                    // Push the image to ECR repository
-                    sh "docker push ${ECR_REPOSITORY}:latest"
+                    // Push the tagged image to ECR repository
+                    docker.image("${ECR_REPOSITORY}:latest").push()
                 }
             }
         }
