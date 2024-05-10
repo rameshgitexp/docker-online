@@ -1,35 +1,37 @@
 pipeline {
     agent any
-  
+
+    environment {
+        // Define environment variables
+        DOCKER_HUB_CREDENTIALS = credentials('Meshra@123')
+        DOCKER_IMAGE_NAME = 'testrameshnew458/ramesh:1.0'
     }
-    stages {
-        stage("Maven Build") {
+
+    
+
+        stage('Build Maven Project') {
             steps {
-                // Run Maven package command
-                sh 'mvn package'
+                // Build Maven project
+                sh 'mvn clean install'
             }
         }
-        stage("Build Docker Image") {
+
+        stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("testrameshnew458:0.1")
-                }
+                // Build Docker image
+                sh 'docker build -t $DOCKER_IMAGE_NAME .'
             }
         }
-        stage('Docker Login') {
-            steps {
-                script {
-                    sh 'docker login -u testrameshnew458 -p Meshra@123'
-                }
-            }
-        }
+
         stage('Push Docker Image to Docker Hub') {
             steps {
-                script {
-                    docker.withRegistry('hhttps://hub.docker.com/explore', 'testrameshnew458') {
-                        docker.image("testrameshnew458:0.1").push()
-                    }
+                // Log in to Docker Hub
+                withCredentials([usernamePassword(credentialsId: DOCKER_HUB_CREDENTIALS, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                 }
+
+                // Push Docker image to Docker Hub
+                sh "docker push $DOCKER_IMAGE_NAME"
             }
         }
     }
