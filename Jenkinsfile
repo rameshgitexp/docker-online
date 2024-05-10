@@ -5,6 +5,8 @@ pipeline {
         // Define environment variables
         DOCKER_HUB_CREDENTIALS = 'Meshra@123'
         DOCKER_IMAGE_NAME = 'testrameshnew458/ramesh:1.0'
+        DOCKER_USERNAME = 'testrameshnew458'
+        DOCKER_PASSWORD = 'Meshra@123'
     }
 
     stages {
