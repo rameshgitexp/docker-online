@@ -34,7 +34,7 @@ pipeline {
             steps {
                 // Log in to Docker Hub
                 withCredentials([usernamePassword(credentialsId: DOCKER_HUB_CREDENTIALS, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                    sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                    sh "docker login -u testrameshnew458 -p Meshra@1"
                 }
 
                 // Push Docker image to Docker Hub
