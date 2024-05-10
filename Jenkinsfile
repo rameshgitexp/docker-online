@@ -7,8 +7,7 @@ pipeline {
         DOCKER_IMAGE_NAME = 'testrameshnew458/ramesh:1.0'
     }
 
-    
-
+    stages {
         stage('Build Maven Project') {
             steps {
                 // Build Maven project
@@ -19,7 +18,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build Docker image
-                sh 'docker build -t $DOCKER_IMAGE_NAME .'
+                sh "docker build -t ${DOCKER_IMAGE_NAME} ."
             }
         }
 
@@ -31,7 +30,7 @@ pipeline {
                 }
 
                 // Push Docker image to Docker Hub
-                sh "docker push $DOCKER_IMAGE_NAME"
+                sh "docker push ${DOCKER_IMAGE_NAME}"
             }
         }
     }
