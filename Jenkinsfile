@@ -6,6 +6,13 @@ pipeline {
         DOCKER_HUB_CREDENTIALS = credentials('Meshra@123')
         DOCKER_IMAGE_NAME = 'testrameshnew458/ramesh:1.0'
     }
+     stages {
+        stage('git Checkout') {
+            steps {
+                // Checkout code from Git repository
+                git 'https://github.com/rameshgitexp/docker-online.git'
+            }
+        }
 
     stages {
         stage('Build Maven') {
