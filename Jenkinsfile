@@ -32,7 +32,7 @@ pipeline {
                     // Tag the built image with ECR repository URL and 'latest' tag
                     docker.image("testrameshnew458:0.1").tag("${ECR_REPOSITORY}:latest")
                     // Push the tagged image to ECR repository
-                    docker.image(docker tag ramesh.repo:latest 211125669141.dkr.ecr.ap-south-1.amazonaws.com/ramesh.repo:latest).push()
+                    docker.image("${ECR_REPOSITORY}:testrameshnew458:0.1").push()
                 }
             }
         }
