@@ -10,8 +10,7 @@ pipeline {
     stages {
         stage('git Checkout') {
             steps {
-                // Checkout code from Git repository
-                git 'https://github.com/rameshgitexp/docker-online.git'
+               git branch: 'main', credentialsId: 'ec2-user', url: 'https://github.com/rameshgitexp/docker-online.git'
             }
         }
 
